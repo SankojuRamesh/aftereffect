@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>  
+
+</head>
+<body>
+
+    
+  <canvas id="canvas" width="800" height="700"></canvas>
+
+
+  <script>
+    var canvas = new fabric.Canvas('canvas');
+    canvas.backgroundColor = 'black'; // Set the background color
+ 
+
+    canvas.setDimensions({
+  width: 3840,
+  height: 1744
+});
+
+
+    
+   
+   
+  </script>
+{%for layer in data%}
+{{layer.text}}
+{{layer.layer_posx}}
+<script>
+
+ 
+var text1 = new fabric.Text('{{layer.text}}', {
+      left: parseInt('{{layer.layer_posx}}'),
+      top: parseInt('{{layer.layer_posy}}'),
+      fontSize: '{{layer.layer_size}}',
+      fill: 'red'
+    });
+    canvas.add(text1);
+
+</script> 
+
+
+{%endfor%}
+<script>
+ canvas.renderAll();
+canvas.renderAll();  
+</script>
+
+</body>
+</html>
